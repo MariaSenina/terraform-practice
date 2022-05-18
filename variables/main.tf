@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 variable "vpcname" {
   type = string
   default = "myvpc"
@@ -24,5 +28,13 @@ variable "mymap" {
   default = {
       Key1 = "Value1"
       Key2 = "Value2"
+  }
+}
+
+resource "aws_vpc" "myvpc" {
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = var.vpcname
   }
 }
