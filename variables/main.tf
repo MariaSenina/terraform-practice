@@ -31,10 +31,16 @@ variable "mymap" {
   }
 }
 
+# Input variables allow the user to manually set a variable when they run ```terraform plan``` command
+variable "inputname" {
+  type = string
+  description = "Set the name of the VPC"
+}
+
 resource "aws_vpc" "myvpc" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    Name = var.mymap["Key2"]
+    Name = var.inputname
   }
 }
