@@ -44,3 +44,11 @@ resource "aws_vpc" "myvpc" {
     Name = var.inputname
   }
 }
+
+# With outputs, we can get details about the resources we've created.
+# NOTE: in this case, we will only get the output once ```terraform apply``` command is run. 
+#       Remember, a vpc is only assigned an id after it has been created in aws.
+output "vpcid" {
+# resourceName.name.attributeToAccess
+  value = aws_vpc.myvpc.id
+}
