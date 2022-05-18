@@ -10,3 +10,9 @@ resource "aws_instance" "ec2" {
       Name = var.ec2name
   }
 }
+
+# To acces any attribute/value from anything we have created inside a module, we have to create as output;
+# To access that output we would use module.moduleName.outputName (in this case, that happens in main.tf)
+output "instance_id" {
+  value = aws_instance.ec2.id
+}
