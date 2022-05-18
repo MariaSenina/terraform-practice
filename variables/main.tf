@@ -52,3 +52,18 @@ output "vpcid" {
 # resourceName.name.attributeToAccess
   value = aws_vpc.myvpc.id
 }
+
+# Tuples
+# A tuple is basically a list that can support multiple data types.
+variable "mytuple" {
+  type = tuple(string, number, string)
+  default = ["cat", 1, "dog"]
+}
+
+variable "myobject" {
+  type = object({name = string, port = list(number)})
+  default = {
+    name = "Test"
+    port = [ 22, 25, 80 ]
+  }
+}
